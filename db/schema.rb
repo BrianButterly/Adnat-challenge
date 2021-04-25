@@ -13,26 +13,28 @@
 ActiveRecord::Schema.define(version: 2021_04_25_150141) do
 
   create_table "organisations", force: :cascade do |t|
-    t.string "org_name"
+    t.integer "organisation_id"
+    t.string "name"
     t.decimal "hourly_rate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "shifts", force: :cascade do |t|
+    t.integer "shift_id"
     t.integer "user_id"
-    t.datetime "shift_start"
-    t.datetime "shift_finish"
+    t.datetime "start"
+    t.datetime "finish"
     t.integer "break_length"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "organisation_id"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
+    t.string "name"
+    t.string "email_address"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
