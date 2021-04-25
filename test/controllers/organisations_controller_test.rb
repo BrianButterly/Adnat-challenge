@@ -1,48 +1,23 @@
-require "test_helper"
+require 'test_helper'
 
 class OrganisationsControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @organisation = organisations(:one)
-  end
-
-  test "should get index" do
-    get organisations_url
-    assert_response :success
-  end
-
-  test "should get new" do
-    get new_organisation_url
-    assert_response :success
-  end
-
-  test "should create organisation" do
-    assert_difference('Organisation.count') do
-      post organisations_url, params: { organisation: { hourly: @organisation.hourly, id: @organisation.id, name: @organisation.name, rate: @organisation.rate } }
+    setup do
+        @user = users(:billy)
+        post '/sessions', params: { email: @user.email_address, password: @user.password_digest }
     end
 
-    assert_redirected_to organisation_url(Organisation.last)
-  end
-
-  test "should show organisation" do
-    get organisation_url(@organisation)
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_organisation_url(@organisation)
-    assert_response :success
-  end
-
-  test "should update organisation" do
-    patch organisation_url(@organisation), params: { organisation: { hourly: @organisation.hourly, id: @organisation.id, name: @organisation.name, rate: @organisation.rate } }
-    assert_redirected_to organisation_url(@organisation)
-  end
-
-  test "should destroy organisation" do
-    assert_difference('Organisation.count', -1) do
-      delete organisation_url(@organisation)
+    teardown do
+        Rails.cache.clear
+        get '/log_out'
     end
 
-    assert_redirected_to organisations_url
-  end
+    test "should create organisation" do
+        # I couldn't figure out how to authenticate a user to access
+        # the action correctly, or the use of stubs.
+        #User.stubs(:authorized).returns true
+        assert_difference('Organisation.count') do
+            post '/organisations', params: { organisation: { name: "Maccas", hourly_rate: 10 } }
+        end
+        assert_redirected_to overview_path(Organisation.last)
+    end
 end
