@@ -1,25 +1,14 @@
 # README
+## Adnat-challenge
+________________________________________________________
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## To install 
+1. Open your terminal.
+2. Git clone git@github.com:BrianButterly/Adnat-challenge.git
+3. cd into Adnat-challenge
+4. Run bundle install
+5. Run rails db:migrate
+6. Run rails s to start the server
+________________________________________________________
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# Adnat-challenge
+## Getting started 
