@@ -13,3 +13,4 @@
 2. Modifying shifts
 3. Overnight shifts
 4. Penalty rates on Sundays
+5. Error handling
