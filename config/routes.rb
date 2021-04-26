@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   get 'sign_up' => 'users#new', :as => "sign_up"
   get 'welcome' => 'sessions#welcome', :as => "welcome"
   get 'overview' => 'sessions#overview', :as => "overview"
-  put 'leave/:id' => 'users#leave_organisation', :as => "leave_organisation"
-  put 'join/:id' => 'users#join_organisation', :as => "join_organisation"
+  get 'leave/:id' => 'users#leave_organisation', :as => "leave_organisation"
+  get 'join/:id' => 'users#join_organisation', :as => "join_organisation"
 
   root :to => "sessions#overview"
 
